@@ -7,6 +7,14 @@ import { inject } from "@angular/core/testing";
   // can provide an inline template or a specific html template file
   // templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"],
+  // we can apply styles to the component html element
+  styles: [
+    `
+      app-simple-form {
+        margin-bottom: 50px;
+      }
+    `,
+  ],
   template: ` <div>
     <ul>
       <!-- *ngFor allows us to iterate through the mail.messages array
