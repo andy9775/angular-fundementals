@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 
 @Component({
   selector: "app-simple-form",
@@ -6,6 +6,7 @@ import { Component, OnInit } from "@angular/core";
     <div>
       <!-- access fields onthe class and display them -->
       <div>{{ hello }}</div>
+      <div>{{ message }}</div>
       <!-- #myInput is ref to the input -->
       <input #myInput type="text" />
 
@@ -25,6 +26,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class SimpleFormComponent implements OnInit {
   hello: string;
+  @Input() message: string; // each element takes an input
 
   onMouseOver(event: MouseEvent) {
     console.log(event);

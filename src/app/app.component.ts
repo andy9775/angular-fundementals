@@ -13,7 +13,12 @@ import { inject } from "@angular/core/testing";
             by specifying 'let message of mail.messages', message is each
             element in the array
        -->
-      <li *ngFor="let message of mail.messages">{{ message }}</li>
+      <!-- [message] is the variable inside the compnent. the square bracket syntax binds it to an outer variable of this compnent. message="outer_message" treats "outer_message" as a string
+      this approach allows us to pass values to components -->
+      <app-simple-form
+        *ngFor="let outer_message of mail.messages"
+        [message]="outer_message"
+      ></app-simple-form>
     </ul>
   </div>`,
 })
