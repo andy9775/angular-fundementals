@@ -8,7 +8,17 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
     <div>{{ message }}</div>
     <!-- #myInput is ref to the input -->
     <!-- [()] syntax provides a two way binding - this was the internal value is set to what's provided but changing it in the input also changes the external value. Whether changed inside the input, or outside the input, the internal and external values are bound so the both change -->
-    <input #myInput type="text" [(ngModel)]="message" />
+    <!-- square brackets evaluates the right side (in quotes) -->
+    <!-- [ngClass] applies the classes (object) provided. (mousedown) gets called when we click inside the box -->
+    <input
+      #myInput
+      type="text"
+      [(ngModel)]="message"
+      [ngClass]="{ mousedown: isMouseDown }"
+      (mousedown)="isMouseDown = true"
+      (mouseup)="isMouseDown = false"
+      (mouseleave)="isMouseDown = false"
+    />
 
     <!-- (click) specifies the event handler -->
     <!-- onClick(myInput.value) allows us to get the value of the input 'myInput' since myInput is the reference to <input> -->
@@ -24,6 +34,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
   // styles defined inside component are isolated to that compnent (*).
   styles: [
     `
+      .mousedown {
+        border: 8px solid green;
+      }
       * {
         font-size: 20px;
       }
@@ -36,6 +49,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 })
 export class SimpleFormComponent implements OnInit {
   hello: string;
+  isMouseDown: boolean = false;
   @Input() message: string; // each element takes an input
   // update is an event emitter which can be bound to by
   // external components. This allows for changes
