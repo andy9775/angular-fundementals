@@ -11,7 +11,14 @@ import { Component, OnInit } from "@angular/core";
 
       <!-- (click) specifies the event handler -->
       <!-- onClick(myInput.value) allows us to get the value of the input 'myInput' since myInput is the reference to <input> -->
-      <button (click)="onClick(myInput.value)">click me</button>
+      <!-- onClick($event) gives us access to mouse events. event gets passed to the handler function -->
+      <!-- (mouseover) calls the event handler when we drag the mouse over the button -->
+      <button
+        (mouseover)="onMouseOver($event)"
+        (click)="onClick($event, myInput.value)"
+      >
+        click me
+      </button>
     </div>
   `,
   styles: [],
@@ -19,8 +26,13 @@ import { Component, OnInit } from "@angular/core";
 export class SimpleFormComponent implements OnInit {
   hello: string;
 
-  onClick(value: string) {
-    console.log(`got: ${value}`);
+  onMouseOver(event: MouseEvent) {
+    console.log(event);
+  }
+
+  onClick(event: MouseEvent, value: string) {
+    console.log(event);
+    console.log(value);
   }
 
   constructor() {}
