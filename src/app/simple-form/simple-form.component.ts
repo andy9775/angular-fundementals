@@ -8,7 +8,8 @@ import { Component, OnInit, Input } from "@angular/core";
       <div>{{ hello }}</div>
       <div>{{ message }}</div>
       <!-- #myInput is ref to the input -->
-      <input #myInput type="text" />
+      <!-- [()] syntax provides a two way binding - this was the internal value is set to what's provided but changing it in the input also changes the external value. Whether changed inside the input, or outside the input, the internal and external values are bound so the both change -->
+      <input #myInput type="text" [(ngModel)]="message" />
 
       <!-- (click) specifies the event handler -->
       <!-- onClick(myInput.value) allows us to get the value of the input 'myInput' since myInput is the reference to <input> -->
