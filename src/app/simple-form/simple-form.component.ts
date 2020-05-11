@@ -1,7 +1,19 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ViewEncapsulation,
+} from "@angular/core";
 
 @Component({
   selector: "app-simple-form",
+  // disables global styles - no styles in or out
+  // default allows global styles in (Emulated)
+  // None allows local styles to be exported and they apply to external
+  // components
+  encapsulation: ViewEncapsulation.Native,
   template: `
     <!-- access fields onthe class and display them -->
     <div>{{ hello }}</div>
